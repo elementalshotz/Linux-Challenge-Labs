@@ -1,0 +1,26 @@
+# DVA233 - Linux
+# Erik Kamph
+# Makefile17.2
+
+CC = gcc
+CFLAGS = -c -Wall
+EXE = rovarsprak.exe
+CLEAN_OBJ = *.o
+OBJECTS = funclib.o getch_linux.o rovarsprak.o
+
+all: $(OBJECTS) output clean
+
+output: $(OBJECTS)
+	$(CC) $(OBJECTS) -o $(EXE)
+
+$(OBJECTS): %.o: %.c $(wildcard %.h)
+	$(CC) $(CFLAGS) $<
+
+clean:
+	rm -f $(CLEAN_OBJ)
+
+realclean: clean
+	rm -f $(EXE)
+
+target: dependencies
+	action

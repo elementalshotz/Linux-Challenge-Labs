@@ -1,0 +1,26 @@
+# DVA233 - Linux
+# Erik Kamph
+# Makefile17.1
+
+all: funclib.o getch_linux.o rovarsprak.o output clean
+
+output: funclib.o getch_linux.o rovarsprak.o
+	gcc funclib.o getch_linux.o rovarsprak.o -o rovarsprak.exe
+
+funclib.o: funclib.c funclib.h
+	gcc -c funclib.c
+
+getch_linux.o: getch_linux.c getch_linux.h
+	gcc -c getch_linux.c
+
+rovarsprak.o: rovarsprak.c
+	gcc -c rovarsprak.c
+
+clean:
+	rm -f *.o
+
+realclean: clean
+	rm -f rovarsprak.exe
+
+target: dependencies
+	action
